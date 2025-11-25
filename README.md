@@ -148,7 +148,6 @@ App 会根据你们的记录自动生成数据分析：
 - **文件系统**: @capacitor/filesystem
 - **二维码生成**: qrcode.react
 - **数据压缩**: lz-string
-- **AI集成**: Google Generative AI (Gemini)
 
 ## 📱 应用信息
 
@@ -215,14 +214,7 @@ npm run cap:build
 Build > Build Bundle(s) / APK(s) > Build APK(s)
 ```
 
-### 环境变量配置（可选）
-
-创建 `.env` 文件用于 AI 功能：
-```env
-GEMINI_API_KEY=your_api_key_here
-```
-
-## 📦 项目结构
+📦 项目结构
 
 ```
 sis-app/
@@ -290,8 +282,6 @@ sis-app/
 - [ ] 更丰富的图表分析
 - [ ] AI 智能建议（基于 Gemini）
 - [ ] 小组件支持
-
-详见 [FEATURES_UPDATE.md](FEATURES_UPDATE.md) 和 [CHANGELOG.md](CHANGELOG.md)
 
 ## 📥 下载与安装
 
