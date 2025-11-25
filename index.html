@@ -16,8 +16,13 @@
                 200: '#fecdd3',
                 300: '#fda4af',
                 400: '#fb7185',
-                500: '#f43f5e', // GF Pink
-                600: '#e11d48',
+                500: '#f472b6', // GF Pink - 更柔和
+                600: '#ec4899',
+                700: '#db2777',
+                800: '#be185d',
+                900: '#9f1239',
+                accent: '#ff6b9d', // 辅助色：珊瑚粉
+                light: '#ffa8c5', // 辅助色：桃色
               },
               cool: {
                 50: '#f0f9ff',
@@ -25,17 +30,88 @@
                 200: '#bae6fd',
                 300: '#7dd3fc',
                 400: '#38bdf8',
-                500: '#0ea5e9', // BF Blue
-                600: '#0284c7',
+                500: '#3b82f6', // BF Blue - 更饱满
+                600: '#2563eb',
+                700: '#1d4ed8',
+                800: '#1e40af',
+                900: '#1e3a8a',
+                accent: '#22d3ee', // 辅助色：青色
+                light: '#6366f1', // 辅助色：靛蓝
+              },
+              // 语义化颜色增强
+              success: {
+                DEFAULT: '#34d399',
+                light: '#6ee7b7',
+                dark: '#10b981',
+              },
+              danger: {
+                DEFAULT: '#f87171',
+                light: '#fca5a5',
+                dark: '#ef4444',
+              },
+              warning: {
+                DEFAULT: '#fbbf24',
+                light: '#fcd34d',
+                dark: '#f59e0b',
+              },
+              neutral: {
+                DEFAULT: '#94a3b8',
+                light: '#cbd5e1',
+                dark: '#64748b',
               }
+            },
+            boxShadow: {
+              // Level 1 - 悬浮卡片
+              'level-1': '0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1)',
+              // Level 2 - 焦点/交互卡片
+              'level-2': '0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.12)',
+              // Level 3 - 模态框/弹窗
+              'level-3': '0 12px 32px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.15)',
+              // 彩色阴影 - 女友主题
+              'love-glow': '0 4px 16px rgba(244, 63, 94, 0.25), 0 2px 8px rgba(244, 63, 94, 0.15)',
+              'love-glow-lg': '0 8px 24px rgba(244, 63, 94, 0.3), 0 4px 12px rgba(244, 63, 94, 0.2)',
+              // 彩色阴影 - 男友主题
+              'cool-glow': '0 4px 16px rgba(14, 165, 233, 0.25), 0 2px 8px rgba(14, 165, 233, 0.15)',
+              'cool-glow-lg': '0 8px 24px rgba(14, 165, 233, 0.3), 0 4px 12px rgba(14, 165, 233, 0.2)',
             },
             animation: {
               'bounce-slight': 'bounce-slight 0.5s infinite',
+              'fade-in': 'fade-in 0.3s ease-out',
+              'slide-up': 'slide-up 0.3s ease-out',
+              'slide-in-right': 'slide-in-right 0.3s ease-out',
+              'scale-in': 'scale-in 0.2s ease-out',
+              'pulse-soft': 'pulse-soft 2s ease-in-out infinite',
+              'float': 'float 6s ease-in-out infinite',
             },
             keyframes: {
               'bounce-slight': {
                 '0%, 100%': { transform: 'translateY(-5%)' },
                 '50%': { transform: 'translateY(0)' },
+              },
+              'fade-in': {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              'slide-up': {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              'slide-in-right': {
+                '0%': { transform: 'translateX(20px)', opacity: '0' },
+                '100%': { transform: 'translateX(0)', opacity: '1' },
+              },
+              'scale-in': {
+                '0%': { transform: 'scale(0.9)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' },
+              },
+              'pulse-soft': {
+                '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+                '50%': { transform: 'scale(1.05)', opacity: '0.9' },
+              },
+              'float': {
+                '0%, 100%': { transform: 'translateY(0) translateX(0)' },
+                '33%': { transform: 'translateY(-20px) translateX(10px)' },
+                '66%': { transform: 'translateY(-10px) translateX(-10px)' },
               }
             }
           },
@@ -43,15 +119,247 @@
       }
     </script>
     <style>
+      /* 主题CSS变量 */
+      :root {
+        --theme-primary: #f472b6;
+        --theme-secondary: #ff6b9d;
+        --theme-gradient: linear-gradient(135deg, #fb7185 0%, #f43f5e 50%, #ec4899 100%);
+      }
+      
+      /* 深色模式变量 */
+      :root.dark {
+        --bg-primary: #1A1A2E;
+        --bg-secondary: #16213E;
+        --text-primary: #E0E0E0;
+        --text-secondary: #A0A0A0;
+        --border-color: #2A2A3E;
+      }
+      
+      /* 浅色模式变量 */
+      :root.light {
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8fafc;
+        --text-primary: #0f172a;
+        --text-secondary: #64748b;
+        --border-color: #e2e8f0;
+      }
+      
       body {
         background-color: #f8fafc;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         -webkit-tap-highlight-color: transparent;
+        overflow-x: hidden;
       }
+      
+      /* 深色模式背景 */
+      :root.dark body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+      }
+      
       /* Hide scrollbar for clean UI */
       ::-webkit-scrollbar {
         width: 0px;
         background: transparent;
+      }
+      
+      /* 平滑滚动 */
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      /* 玻璃态效果 */
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      
+      /* 渐变文字效果 */
+      .gradient-text {
+        background: linear-gradient(135deg, #fb7185 0%, #f43f5e 50%, #e11d48 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .gradient-text-cool {
+        background: linear-gradient(135deg, #22d3ee 0%, #0ea5e9 50%, #3b82f6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      /* 背景渐变效果 */
+      .gradient-bg-love {
+        background: linear-gradient(135deg, #fb7185 0%, #f43f5e 50%, #ec4899 100%);
+      }
+      
+      .gradient-bg-cool {
+        background: linear-gradient(135deg, #22d3ee 0%, #0ea5e9 50%, #3b82f6 100%);
+      }
+      
+      /* 渐变边框效果 */
+      .gradient-border-love {
+        border: 2px solid transparent;
+        background-image: 
+          linear-gradient(white, white),
+          linear-gradient(135deg, #fb7185, #f43f5e, #ec4899);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+      }
+      
+      .gradient-border-cool {
+        border: 2px solid transparent;
+        background-image: 
+          linear-gradient(white, white),
+          linear-gradient(135deg, #22d3ee, #0ea5e9, #3b82f6);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+      }
+      
+      /* 优化触摸反馈 */
+      button, a, svg, path, circle, rect, line, polyline, polygon {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+      
+      /* 移除所有元素的触摸高亮 */
+      * {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      
+      /* 保留输入框和文本区域的选择功能 */
+      input, textarea {
+        -webkit-user-select: text;
+        -khtml-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+      }
+      
+      /* Recharts 图表元素禁用触摸高亮和轮廓 */
+      .recharts-wrapper,
+      .recharts-surface,
+      .recharts-layer,
+      .recharts-line,
+      .recharts-line-curve,
+      .recharts-bar,
+      .recharts-bar-rectangle,
+      .recharts-area,
+      .recharts-area-curve,
+      .recharts-cartesian-grid,
+      .recharts-dot,
+      .recharts-legend-wrapper,
+      .recharts-tooltip-wrapper {
+        -webkit-tap-highlight-color: transparent !important;
+        outline: none !important;
+        touch-action: manipulation;
+      }
+      
+      /* Recharts SVG 路径禁用触摸高亮 */
+      .recharts-wrapper svg,
+      .recharts-wrapper path,
+      .recharts-wrapper rect,
+      .recharts-wrapper circle,
+      .recharts-wrapper line,
+      .recharts-wrapper polyline,
+      .recharts-wrapper polygon {
+        -webkit-tap-highlight-color: transparent !important;
+        outline: none !important;
+        pointer-events: none;
+      }
+      
+      /* 柱状图和曲线图可交互区域禁用高亮 */
+      .recharts-bar-rectangle path,
+      .recharts-line-curve {
+        -webkit-tap-highlight-color: transparent !important;
+        outline: none !important;
+        -webkit-user-select: none !important;
+        user-select: none !important;
+      }
+      
+      /* 输入框范围滑块自定义样式 */
+      input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        background: transparent;
+      }
+      
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      
+      input[type="range"]::-webkit-slider-thumb:active {
+        transform: scale(1.2);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      
+      input[type="range"]::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s ease;
+      }
+      
+      input[type="range"]::-moz-range-thumb:active {
+        transform: scale(1.2);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      
+      /* 选中文本的高亮颜色 */
+      ::selection {
+        background-color: #fbbf24;
+        color: #000;
+      }
+      
+      ::-moz-selection {
+        background-color: #fbbf24;
+        color: #000;
+      }
+      
+      /* 骨架屏闪烁动画 */
+      @keyframes shimmer {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+      
+      /* 减少动画效果支持 */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+      
+      /* 防止 iOS 缩放 */
+      input, textarea, select {
+        font-size: 16px !important;
       }
     </style>
 
